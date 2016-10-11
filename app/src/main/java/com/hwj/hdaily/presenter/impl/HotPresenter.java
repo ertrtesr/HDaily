@@ -1,15 +1,12 @@
 package com.hwj.hdaily.presenter.impl;
 
-import com.hwj.hdaily.base.interfaces.INetCallback;
-import com.hwj.hdaily.di.component.DaggerPresenterComponent;
-import com.hwj.hdaily.di.module.ModelModule;
 import com.hwj.hdaily.model.entity.HotInfo;
+import com.hwj.hdaily.model.entity.base.HttpResult;
 import com.hwj.hdaily.model.interfaces.IHotModel;
+import com.hwj.hdaily.presenter.interfaces.BasePresenter;
 import com.hwj.hdaily.presenter.interfaces.IHotPresenter;
 import com.hwj.hdaily.utils.LogUtils;
 import com.hwj.hdaily.view.interfaces.IHotView;
-
-import javax.inject.Inject;
 
 /**
  * 作者: huangwenjian
@@ -19,49 +16,41 @@ import javax.inject.Inject;
  * 时间: 16/10/11
  */
 
-public class HotPresenter implements INetCallback<HotInfo>, IHotPresenter {
+public class HotPresenter extends BasePresenter<IHotModel, IHotView> implements IHotPresenter {
 
-    private IHotView mHotView;
-
-    @Inject
-    IHotModel mHotModel;
-
-    public HotPresenter(IHotView hotView) {
-        mHotView = hotView;
-        initInject();
+    public HotPresenter(IHotView view) {
+        super(view);
     }
 
     @Override
     public void initInject() {
-        DaggerPresenterComponent.builder()
-                .modelModule(new ModelModule(this))
-                .build()
-                .inject(this);
+        getPresentComponent().inject(this);
     }
 
     @Override
     public void getHotInfo() {
-        mHotModel.getHotInfo();
+        mModel.getHotInfo();
     }
 
     @Override
     public void onStart() {
-        mHotView.showLoading();
+        mView.showLoading();
     }
 
     @Override
-    public void onSuccess(HotInfo hotInfo) {
-        mHotView.showHot(hotInfo);
+    public void onSuccess(HttpResult result) {
+        if (result instanceof HotInfo)
+            mView.showHot((HotInfo) result);
     }
 
     @Override
     public void onError(String e) {
         LogUtils.i(getClass().getSimpleName(), e);
-        mHotView.showError();
+        mView.showError();
     }
 
     @Override
     public void onComplete() {
-        mHotView.finishLoading();
+        mView.finishLoading();
     }
 }
