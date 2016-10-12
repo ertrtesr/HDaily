@@ -52,8 +52,8 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
 
     @Override
     public void showSplash(SplashInfo splashInfo) {
-        UIUtils.loadImage(splashInfo.getImg(), iv_splash);
 
+        UIUtils.loadImage(splashInfo.getImg(), iv_splash);
         //放大的动画
         iv_splash.animate().scaleX(1.2f).scaleY(1.2f).setDuration(2000).setStartDelay(300).start();
 

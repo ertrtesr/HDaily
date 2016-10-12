@@ -6,6 +6,7 @@ import com.hwj.hdaily.model.interfaces.ISplashModel;
 import com.hwj.hdaily.presenter.base.BasePresenter;
 import com.hwj.hdaily.presenter.interfaces.ISplashPresenter;
 import com.hwj.hdaily.utils.LogUtils;
+import com.hwj.hdaily.utils.UIUtils;
 import com.hwj.hdaily.view.interfaces.ISplashView;
 
 /**
@@ -28,7 +29,6 @@ public class SplashPresenter extends BasePresenter<ISplashModel, ISplashView> im
         getPresenterComponent().inject(this);
     }
 
-
     @Override
     public void getSplashInfo() {
         mModel.getSplashInfo();
@@ -41,9 +41,14 @@ public class SplashPresenter extends BasePresenter<ISplashModel, ISplashView> im
     }
 
     @Override
-    public void onSuccess(HttpResult result) {
+    public void onSuccess(final HttpResult result) {
         if (result instanceof SplashInfo)
-            mView.showSplash((SplashInfo) result);
+            UIUtils.postTaskDelay(new Runnable() {
+                @Override
+                public void run() {
+                    mView.showSplash((SplashInfo) result);
+                }
+            }, 1500);
     }
 
     @Override

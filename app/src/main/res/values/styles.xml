@@ -3,9 +3,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#333333</item>
+        <!--状态栏的颜色-->
+        <item name="colorPrimaryDark">#333333</item>
+        <item name="colorAccent">#333333</item>
+        <item name="colorControlNormal">@android:color/white</item>
     </style>
 
 
