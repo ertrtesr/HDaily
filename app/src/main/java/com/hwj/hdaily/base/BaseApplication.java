@@ -23,6 +23,12 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mAppContext = this;
+
+        initCrashHandler();
+    }
+
+    private void initCrashHandler() {
+        CrashHandler.init(new CrashHandler(this));
     }
 
     public static AppComponent getAppComponent() {

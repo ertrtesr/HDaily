@@ -2,12 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+             android:fitsSystemWindows="true"
              android:orientation="vertical">
 
     <ImageView
         android:id="@+id/iv_splash"
-        android:background="@mipmap/app_sign"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@mipmap/app_sign"/>
 
 </FrameLayout>

@@ -2,6 +2,7 @@ package com.hwj.hdaily.view.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -60,11 +61,11 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        toolbar_home.setTitle("肥支日报");
+        toolbar_home.setTitle("豪老司机日报");
         toolbar_home.setLogo(R.drawable.ab_android);
         setSupportActionBar(toolbar_home);
 
-        initViewPager();
+        initViewPager();                    //初始化ViewPager
         initMagicIndicator();
     }
 
@@ -133,6 +134,14 @@ public class HomeActivity extends BaseActivity {
         toolbar_home.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_mail:
+                        Intent intent = new Intent(HomeActivity.this, MailActivity.class);
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
                 return true;
             }
         });
