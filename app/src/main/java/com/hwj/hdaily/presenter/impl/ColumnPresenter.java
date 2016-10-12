@@ -3,7 +3,7 @@ package com.hwj.hdaily.presenter.impl;
 import com.hwj.hdaily.model.entity.ColumnInfo;
 import com.hwj.hdaily.model.entity.base.HttpResult;
 import com.hwj.hdaily.model.interfaces.IColumnModel;
-import com.hwj.hdaily.presenter.interfaces.BasePresenter;
+import com.hwj.hdaily.presenter.base.BasePresenter;
 import com.hwj.hdaily.presenter.interfaces.IColumnPresenter;
 import com.hwj.hdaily.utils.LogUtils;
 import com.hwj.hdaily.view.interfaces.IColumnView;
@@ -24,7 +24,7 @@ public class ColumnPresenter extends BasePresenter<IColumnModel, IColumnView> im
 
     @Override
     public void initInject() {
-        getPresentComponent().inject(this);
+        getPresenterComponent().inject(this);
     }
 
     @Override

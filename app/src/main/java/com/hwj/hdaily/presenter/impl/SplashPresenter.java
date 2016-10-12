@@ -3,7 +3,7 @@ package com.hwj.hdaily.presenter.impl;
 import com.hwj.hdaily.model.entity.SplashInfo;
 import com.hwj.hdaily.model.entity.base.HttpResult;
 import com.hwj.hdaily.model.interfaces.ISplashModel;
-import com.hwj.hdaily.presenter.interfaces.BasePresenter;
+import com.hwj.hdaily.presenter.base.BasePresenter;
 import com.hwj.hdaily.presenter.interfaces.ISplashPresenter;
 import com.hwj.hdaily.utils.LogUtils;
 import com.hwj.hdaily.view.interfaces.ISplashView;
@@ -25,7 +25,7 @@ public class SplashPresenter extends BasePresenter<ISplashModel, ISplashView> im
     @Override
     public void initInject() {
         //如果有module类就必须注入,不能忘
-        getPresentComponent().inject(this);
+        getPresenterComponent().inject(this);
     }
 
 

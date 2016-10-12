@@ -3,7 +3,7 @@ package com.hwj.hdaily.presenter.impl;
 import com.hwj.hdaily.model.entity.HotInfo;
 import com.hwj.hdaily.model.entity.base.HttpResult;
 import com.hwj.hdaily.model.interfaces.IHotModel;
-import com.hwj.hdaily.presenter.interfaces.BasePresenter;
+import com.hwj.hdaily.presenter.base.BasePresenter;
 import com.hwj.hdaily.presenter.interfaces.IHotPresenter;
 import com.hwj.hdaily.utils.LogUtils;
 import com.hwj.hdaily.view.interfaces.IHotView;
@@ -24,7 +24,7 @@ public class HotPresenter extends BasePresenter<IHotModel, IHotView> implements 
 
     @Override
     public void initInject() {
-        getPresentComponent().inject(this);
+        getPresenterComponent().inject(this);
     }
 
     @Override

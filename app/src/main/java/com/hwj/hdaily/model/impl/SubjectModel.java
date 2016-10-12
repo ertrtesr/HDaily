@@ -4,6 +4,7 @@ import com.hwj.hdaily.api.API;
 import com.hwj.hdaily.base.BaseSubscriber;
 import com.hwj.hdaily.base.interfaces.INetCallback;
 import com.hwj.hdaily.manager.FragmentCollection;
+import com.hwj.hdaily.model.base.BaseModel;
 import com.hwj.hdaily.model.entity.SubjectInfo;
 import com.hwj.hdaily.model.interfaces.ISubjectModel;
 import com.hwj.hdaily.view.fragment.SubjectFragment;
@@ -16,12 +17,10 @@ import com.hwj.hdaily.view.fragment.SubjectFragment;
  * 时间: 16/10/10
  */
 
-public class SubjectModel implements ISubjectModel {
-
-    private INetCallback<SubjectInfo> mCallback;
+public class SubjectModel extends BaseModel<SubjectInfo> implements ISubjectModel {
 
     public SubjectModel(INetCallback<SubjectInfo> callback) {
-        this.mCallback = callback;
+        super(callback);
     }
 
     @Override

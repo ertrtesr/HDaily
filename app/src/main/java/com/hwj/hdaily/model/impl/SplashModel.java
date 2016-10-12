@@ -4,6 +4,7 @@ import com.hwj.hdaily.api.API;
 import com.hwj.hdaily.base.BaseSubscriber;
 import com.hwj.hdaily.base.interfaces.INetCallback;
 import com.hwj.hdaily.manager.ActivityCollection;
+import com.hwj.hdaily.model.base.BaseModel;
 import com.hwj.hdaily.model.entity.SplashInfo;
 import com.hwj.hdaily.model.interfaces.ISplashModel;
 import com.hwj.hdaily.view.activity.SplashActivity;
@@ -16,13 +17,12 @@ import com.hwj.hdaily.view.activity.SplashActivity;
  * 时间: 16/10/9
  */
 
-public class SplashModel implements ISplashModel {
+public class SplashModel extends BaseModel<SplashInfo> implements ISplashModel {
 
-    private INetCallback<SplashInfo> mCallback;
     private static final String RES = "1080*1776";
 
     public SplashModel(INetCallback<SplashInfo> callback) {
-        this.mCallback = callback;
+        super(callback);
     }
 
     /**

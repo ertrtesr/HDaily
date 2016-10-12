@@ -4,6 +4,7 @@ import com.hwj.hdaily.api.API;
 import com.hwj.hdaily.base.BaseSubscriber;
 import com.hwj.hdaily.base.interfaces.INetCallback;
 import com.hwj.hdaily.manager.FragmentCollection;
+import com.hwj.hdaily.model.base.BaseModel;
 import com.hwj.hdaily.model.entity.ColumnInfo;
 import com.hwj.hdaily.model.interfaces.IColumnModel;
 import com.hwj.hdaily.view.fragment.ColumnFragment;
@@ -16,12 +17,10 @@ import com.hwj.hdaily.view.fragment.ColumnFragment;
  * 时间: 16/10/11
  */
 
-public class ColumnModel implements IColumnModel {
-
-    private INetCallback<ColumnInfo> mCallback;
+public class ColumnModel extends BaseModel<ColumnInfo> implements IColumnModel {
 
     public ColumnModel(INetCallback<ColumnInfo> callback) {
-        mCallback = callback;
+        super(callback);
     }
 
     @Override

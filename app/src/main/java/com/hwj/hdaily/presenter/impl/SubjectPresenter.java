@@ -3,7 +3,7 @@ package com.hwj.hdaily.presenter.impl;
 import com.hwj.hdaily.model.entity.SubjectInfo;
 import com.hwj.hdaily.model.entity.base.HttpResult;
 import com.hwj.hdaily.model.interfaces.ISubjectModel;
-import com.hwj.hdaily.presenter.interfaces.BasePresenter;
+import com.hwj.hdaily.presenter.base.BasePresenter;
 import com.hwj.hdaily.presenter.interfaces.ISubjectPresenter;
 import com.hwj.hdaily.utils.LogUtils;
 import com.hwj.hdaily.view.interfaces.ISubjectView;
@@ -29,7 +29,7 @@ public class SubjectPresenter extends BasePresenter<ISubjectModel, ISubjectView>
 
     @Override
     public void initInject() {
-        getPresentComponent().inject(this);
+        getPresenterComponent().inject(this);
     }
 
     @Override

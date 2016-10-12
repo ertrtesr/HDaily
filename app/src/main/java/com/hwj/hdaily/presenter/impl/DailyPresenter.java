@@ -3,7 +3,7 @@ package com.hwj.hdaily.presenter.impl;
 import com.hwj.hdaily.model.entity.DailyInfo;
 import com.hwj.hdaily.model.entity.base.HttpResult;
 import com.hwj.hdaily.model.interfaces.IDailyModel;
-import com.hwj.hdaily.presenter.interfaces.BasePresenter;
+import com.hwj.hdaily.presenter.base.BasePresenter;
 import com.hwj.hdaily.presenter.interfaces.IDailyPresenter;
 import com.hwj.hdaily.utils.LogUtils;
 import com.hwj.hdaily.view.interfaces.IDailyView;
@@ -24,7 +24,7 @@ public class DailyPresenter extends BasePresenter<IDailyModel, IDailyView> imple
 
     @Override
     public void initInject() {
-        getPresentComponent().inject(this);
+        getPresenterComponent().inject(this);
     }
 
     @Override
