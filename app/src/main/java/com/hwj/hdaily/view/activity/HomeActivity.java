@@ -61,7 +61,6 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        toolbar_home.setTitle("豪老司机日报");
         toolbar_home.setLogo(R.drawable.ab_android);
         setSupportActionBar(toolbar_home);
 

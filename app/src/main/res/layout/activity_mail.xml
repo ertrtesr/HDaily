@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_mail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="mail"
-        android:textSize="20sp"/>
+        android:background="#333333"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        app:title="邮箱"
+        app:titleTextColor="@android:color/white"></android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/met_send_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="发件地址"
+            app:met_baseColor="#666666"
+            app:met_floatingLabel="highlight"
+            app:met_textColor="#000000"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/add"/>
+    </RelativeLayout>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/met_my_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="我的邮箱"
+        app:met_baseColor="#666666"
+        app:met_floatingLabel="highlight"
+        app:met_textColor="#000000"/>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/met_theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="主题"
+        app:met_baseColor="#666666"
+        app:met_floatingLabel="highlight"
+        app:met_textColor="#000000"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/met_mail_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="内容"
+            app:met_baseColor="#666666"
+            app:met_floatingLabel="none"
+            app:met_hideUnderline="true"
+            app:met_textColor="@android:color/black"/>
+
+    </ScrollView>
+
 
 </LinearLayout>
