@@ -22,4 +22,9 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="ToolbarTheme" parent="AppTheme">
+        <!--<item name="android:selectableItemBackground">@drawable/selector_toolbar_menu</item>-->
+    </style>
+
+
 </resources>

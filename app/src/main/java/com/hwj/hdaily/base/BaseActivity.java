@@ -33,8 +33,8 @@ public abstract class BaseActivity<T> extends RxAppCompatActivity {
         super.onCreate(savedInstanceState);
         init();
         initRootView();
-        initData();
         initView();
+        initData();
         initListener();
     }
 

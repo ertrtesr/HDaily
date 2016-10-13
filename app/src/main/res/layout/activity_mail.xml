@@ -12,6 +12,7 @@
         android:background="#333333"
         android:fitsSystemWindows="true"
         android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ToolbarTheme"
         app:title="邮箱"
         app:titleTextColor="@android:color/white"></android.support.v7.widget.Toolbar>
 
@@ -26,7 +27,7 @@
             android:id="@+id/met_send_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="发件地址"
+            android:hint="收件人:"
             app:met_baseColor="#666666"
             app:met_floatingLabel="highlight"
             app:met_textColor="#000000"/>
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:hint="我的邮箱"
+        android:hint="发件人:"
         app:met_baseColor="#666666"
         app:met_floatingLabel="highlight"
         app:met_textColor="#000000"/>
@@ -56,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:hint="主题"
+        android:hint="主题:"
         app:met_baseColor="#666666"
         app:met_floatingLabel="highlight"
         app:met_textColor="#000000"/>
@@ -71,7 +72,7 @@
             android:id="@+id/met_mail_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="内容"
+            android:hint="内容:"
             app:met_baseColor="#666666"
             app:met_floatingLabel="none"
             app:met_hideUnderline="true"

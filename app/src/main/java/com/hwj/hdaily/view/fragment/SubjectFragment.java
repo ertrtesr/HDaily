@@ -1,6 +1,7 @@
 package com.hwj.hdaily.view.fragment;
 
 import android.support.v7.widget.GridLayoutManager;
+import android.view.View;
 
 import com.hwj.hdaily.R;
 import com.hwj.hdaily.adapter.SubjectAdapter;
@@ -45,14 +46,18 @@ public class SubjectFragment extends BaseFragment<SubjectPresenter> implements I
 
     private void initData() {
         mPresenter.getSubjectInfo();        //获取网络数据
+        initRecyclerView();
+    }
 
+    private void initRecyclerView() {
         rv_subject.setLoadingMoreEnabled(false);
+        rv_subject.addFootView(new View(getContext()));       //必须要有这句,否则底部会留白
         rv_subject.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         ArrowRefreshHeader header = new ArrowRefreshHeader(getActivity());
         header.setProgressStyle(ProgressStyle.BallSpinFadeLoader);
         header.setArrowImageView(R.mipmap.down_arrow);
         header.setVisiableHeight(UIUtils.dip2Px(10));
-//        rv_subject.addHeaderView(header);
+        rv_subject.addHeaderView(header);
         rv_subject.setRefreshHeader(header);
         rv_subject.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override

@@ -1,6 +1,7 @@
 package com.hwj.hdaily.view.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.hwj.hdaily.R;
 import com.hwj.hdaily.adapter.HotAdapter;
@@ -43,8 +44,12 @@ public class HotFragment extends BaseFragment<HotPresenter> implements IHotView 
 
     private void initData() {
         mPresenter.getHotInfo();
+        initRecyclerView();
+    }
 
+    private void initRecyclerView() {
         rv_hot.setLoadingMoreEnabled(false);
+        rv_hot.addFootView(new View(getContext()));       //必须要有这句,否则底部会留白
         rv_hot.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         rv_hot.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv_hot.setLoadingListener(new XRecyclerView.LoadingListener() {

@@ -2,10 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_mail_clear"
-        android:icon="@mipmap/clear"
-        android:orderInCategory="100"
-        android:title="邮箱"
+        android:id="@+id/menu_mail_send"
         android:layout_width="3dp"
-        app:showAsAction="always"/>
+        android:icon="@mipmap/email_send"
+        android:orderInCategory="100"
+        android:title="发送"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_mail_clear"
+        android:layout_width="3dp"
+        android:icon="@mipmap/delete"
+        android:orderInCategory="100"
+        android:title="清除"
+        app:showAsAction="ifRoom"/>
 </menu>

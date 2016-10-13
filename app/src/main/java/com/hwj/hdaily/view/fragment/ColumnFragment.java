@@ -1,6 +1,7 @@
 package com.hwj.hdaily.view.fragment;
 
 import android.support.v7.widget.GridLayoutManager;
+import android.view.View;
 
 import com.hwj.hdaily.R;
 import com.hwj.hdaily.adapter.ColumnAdapter;
@@ -44,7 +45,12 @@ public class ColumnFragment extends BaseFragment<ColumnPresenter> implements ICo
     private void initData() {
         mPresenter.getColumnInfo();
 
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
         rv_column.setLoadingMoreEnabled(false);
+        rv_column.addFootView(new View(getContext()));       //必须要有这句,否则底部会留白
         rv_column.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         rv_column.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 

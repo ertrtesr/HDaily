@@ -45,8 +45,12 @@ public class DailyFragment extends BaseFragment<DailyPresenter> implements IDail
 
     private void initData() {
         mPresenter.getDailyInfo();
+        initRecyclerView();
+    }
 
+    private void initRecyclerView() {
         rv_daily.setLoadingMoreEnabled(false);
+        rv_daily.addFootView(new View(getContext()));       //必须要有这句,否则底部会留白
         rv_daily.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         rv_daily.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv_daily.setLoadingListener(new XRecyclerView.LoadingListener() {
