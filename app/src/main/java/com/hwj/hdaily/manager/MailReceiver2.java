@@ -111,7 +111,7 @@ public class MailReceiver2 {
                     list.add(map);
                 }
             } else {
-                ToastUtils.showToastSafely("没有邮件");
+                ToastUtils.showToast("没有邮件");
             }
         } catch (NoSuchProviderException e) {
             e.printStackTrace();

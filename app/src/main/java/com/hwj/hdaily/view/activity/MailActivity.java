@@ -74,9 +74,9 @@ public class MailActivity extends BaseActivity {
                 boolean isSuccess = new MailSender().sendTextMail(mailInfo);
                 if (isSuccess) {
                     System.out.println(Thread.currentThread().getName());
-                    ToastUtils.showToastSafely("发送成功");
+                    ToastUtils.showToast("发送成功");
                 } else {
-                    ToastUtils.showToastSafely("发送失败");
+                    ToastUtils.showToast("发送失败");
                 }
             }
         }).start();

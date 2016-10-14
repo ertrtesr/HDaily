@@ -148,7 +148,8 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        showExitDialog();       //显示退出应用的对话框
+//        showExitDialog();       //显示退出应用的对话框
+        System.exit(0);
     }
 
     private void showExitDialog() {

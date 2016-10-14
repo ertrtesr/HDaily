@@ -6,7 +6,7 @@ import com.hwj.hdaily.base.BaseActivity;
 /**
  * 作者: huangwenjian
  * <p>
- * 描述:
+ * 描述: 好友页面
  * <p>
  * 时间: 16/10/14
  */

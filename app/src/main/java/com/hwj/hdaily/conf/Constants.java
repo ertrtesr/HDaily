@@ -23,4 +23,7 @@ public class Constants {
     public static final int SUBJECT = 1;
     public static final int COLUMN = 2;
     public static final int HOT = 3;
+
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
 }

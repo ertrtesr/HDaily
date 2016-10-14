@@ -99,7 +99,7 @@ public class BaseApplication extends Application {
         if (ActivityCollection.map != null && ActivityCollection.map.size() > 0) {
             ActivityCollection.removeAll();
         }
-        android.os.Process.killProcess(android.os.Process.myPid());     //杀死进程
+//        android.os.Process.killProcess(android.os.Process.myPid());     //杀死进程
         System.exit(0);
     }
 }

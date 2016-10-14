@@ -38,6 +38,7 @@
         <activity android:name=".view.activity.LoginActivity"/>
         <activity android:name=".view.activity.HomeActivity"/>
         <activity android:name=".view.activity.MailActivity"/>
+        <activity android:name=".view.activity.FriendActivity"/>
 
         <!-- 设置环信应用的AppKey -->
         <meta-data
