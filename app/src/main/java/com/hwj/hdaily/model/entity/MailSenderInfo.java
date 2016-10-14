@@ -8,8 +8,10 @@ public class MailSenderInfo {
     private String mailServerPort = "25";
     // 邮件发送者的地址
     private String fromAddress;
-    // 邮件接收者的地址
-    private String toAddress;
+    // 邮件的接收者，可以有多个
+    private String[] receivers;
+    // 邮件的抄送者，可以有多个
+    private String[] ccs;
     // 登陆邮件发送服务器的用户名和密码
     private String userName;
     private String password;
@@ -34,6 +36,10 @@ public class MailSenderInfo {
         return p;
     }
 
+    public boolean isValidate() {
+        return validate;
+    }
+
     public String getMailServerHost() {
         return mailServerHost;
     }
@@ -50,28 +56,36 @@ public class MailSenderInfo {
         this.mailServerPort = mailServerPort;
     }
 
-    public boolean isValidate() {
-        return validate;
-    }
-
-    public void setValidate(boolean validate) {
-        this.validate = validate;
-    }
-
-    public String[] getAttachFileNames() {
-        return attachFileNames;
-    }
-
-    public void setAttachFileNames(String[] fileNames) {
-        this.attachFileNames = fileNames;
-    }
-
     public String getFromAddress() {
         return fromAddress;
     }
 
     public void setFromAddress(String fromAddress) {
         this.fromAddress = fromAddress;
+    }
+
+    public String[] getReceivers() {
+        return receivers;
+    }
+
+    public void setReceivers(String[] receivers) {
+        this.receivers = receivers;
+    }
+
+    public String[] getCcs() {
+        return ccs;
+    }
+
+    public void setCcs(String[] ccs) {
+        this.ccs = ccs;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -82,20 +96,8 @@ public class MailSenderInfo {
         this.password = password;
     }
 
-    public String getToAddress() {
-        return toAddress;
-    }
-
-    public void setToAddress(String toAddress) {
-        this.toAddress = toAddress;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setValidate(boolean validate) {
+        this.validate = validate;
     }
 
     public String getSubject() {
@@ -110,7 +112,15 @@ public class MailSenderInfo {
         return content;
     }
 
-    public void setContent(String textContent) {
-        this.content = textContent;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String[] getAttachFileNames() {
+        return attachFileNames;
+    }
+
+    public void setAttachFileNames(String[] attachFileNames) {
+        this.attachFileNames = attachFileNames;
     }
 }

@@ -1,7 +1,10 @@
 package com.hwj.hdaily.view.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.hwj.hdaily.R;
 import com.hwj.hdaily.adapter.DailyAdapter;
@@ -9,6 +12,7 @@ import com.hwj.hdaily.base.BaseFragment;
 import com.hwj.hdaily.base.listener.RecyclerViewClickListener;
 import com.hwj.hdaily.model.entity.DailyInfo;
 import com.hwj.hdaily.presenter.impl.DailyPresenter;
+import com.hwj.hdaily.utils.UIUtils;
 import com.hwj.hdaily.view.interfaces.IDailyView;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -49,8 +53,15 @@ public class DailyFragment extends BaseFragment<DailyPresenter> implements IDail
     }
 
     private void initRecyclerView() {
-        rv_daily.setLoadingMoreEnabled(false);
-        rv_daily.addFootView(new View(getContext()));       //必须要有这句,否则底部会留白
+        rv_daily.setLoadingMoreEnabled(true);
+//        rv_daily.addFootView(new View(getContext()));       //必须要有这句,否则底部会留白
+        TextView tv = new TextView(getContext());
+        tv.setText("this is header");
+        RecyclerView.LayoutParams params =
+                new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, UIUtils.dip2Px(200));
+        tv.setGravity(Gravity.CENTER);
+        tv.setLayoutParams(params);
+        rv_daily.addHeaderView(tv);
         rv_daily.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         rv_daily.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv_daily.setLoadingListener(new XRecyclerView.LoadingListener() {

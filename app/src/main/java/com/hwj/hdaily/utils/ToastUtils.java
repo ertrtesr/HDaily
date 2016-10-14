@@ -15,15 +15,11 @@ public class ToastUtils {
     }
 
     public static void showToastSafely(final String text) {
-        if (UIUtils.isMainThread()) {
-            showToast(text);
-        } else {
-            UIUtils.postTaskSafely(new Runnable() {
-                @Override
-                public void run() {
-                    showToast(text);
-                }
-            });
-        }
+        UIUtils.postTaskSafely(new Runnable() {
+            @Override
+            public void run() {
+                showToast(text);
+            }
+        });
     }
 }

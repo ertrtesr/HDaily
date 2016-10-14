@@ -23,6 +23,7 @@ public class FileUtils {
     public static final String DOWNLOAD_DIR = "download";
     public static final String CACHE_DIR = "cache";
     public static final String ICON_DIR = "icon";
+    public static final String MAIL_DIR = "mail";
 
     /**
      * 判断SD卡是否挂载
@@ -55,6 +56,13 @@ public class FileUtils {
      */
     public static String getIconDir() {
         return getDir(ICON_DIR);
+    }
+
+    /**
+     * 获取email目录
+     */
+    public static String getMailDir() {
+        return getDir(MAIL_DIR);
     }
 
     /**

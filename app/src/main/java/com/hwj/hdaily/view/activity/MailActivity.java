@@ -6,7 +6,9 @@ import android.view.MenuItem;
 
 import com.hwj.hdaily.R;
 import com.hwj.hdaily.base.BaseActivity;
-import com.hwj.hdaily.utils.MailSender;
+import com.hwj.hdaily.manager.MailSender;
+import com.hwj.hdaily.model.entity.MailSenderInfo;
+import com.hwj.hdaily.utils.ToastUtils;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
@@ -50,29 +52,32 @@ public class MailActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        sendMail();
     }
 
     private void sendMail() {
-        final MailSender.MultiMailSenderInfo mailInfo = new MailSender.MultiMailSenderInfo();
+        final MailSenderInfo mailInfo = new MailSenderInfo();
         mailInfo.setMailServerHost("smtp.qq.com");
         mailInfo.setMailServerPort("587");
-        mailInfo.setValidate(true);
+        mailInfo.setValidate(true);                         //设置是否需要身份验证
         mailInfo.setUserName("631236933@qq.com");
-        mailInfo.setPassword("xjetsrosirsqbeah ");//您的邮箱密码
+        mailInfo.setPassword("xjetsrosirsqbeah ");          //您的邮箱密码,QQ邮箱是填授权码
         mailInfo.setFromAddress("631236933@qq.com");
-        mailInfo.setToAddress("er1trtesr2009@163.com");
-        mailInfo.setSubject("测试");
-        mailInfo.setContent("好的我知道了");
-//        String[] receivers = new String[]{"***@163.com", "***@tom.com"};
-//        String[] ccs = receivers;
-//        mailInfo.setReceivers(receivers);
-//        mailInfo.setCcs(ccs);
+        mailInfo.setSubject("测试1");
+        mailInfo.setContent("内容1");
+        mailInfo.setReceivers(new String[]{"er1trtesr2009@163.com"});       //设置接收者
+        mailInfo.setCcs(new String[]{"er1trtesr2009@163.com"});             //设置抄送者
+
         //发送邮件是网络操作,要在子线程
         new Thread(new Runnable() {
             @Override
             public void run() {
-                MailSender.sendTextMail(mailInfo);
+                boolean isSuccess = new MailSender().sendTextMail(mailInfo);
+                if (isSuccess) {
+                    System.out.println(Thread.currentThread().getName());
+                    ToastUtils.showToastSafely("发送成功");
+                } else {
+                    ToastUtils.showToastSafely("发送失败");
+                }
             }
         }).start();
     }
@@ -90,11 +95,10 @@ public class MailActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.menu_mail_send:
                 sendMail();
-                break;
+                return true;
             case R.id.menu_mail_clear:
                 met_mail_content.setText("");
                 return true;

@@ -61,4 +61,5 @@ dependencies {
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile files('libs/commons-email-1.4.jar')
     compile files('libs/activation.jar')
+    compile files('libs/hyphenatechat_3.1.5.jar')
 }

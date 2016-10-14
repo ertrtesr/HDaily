@@ -2,7 +2,9 @@ package com.hwj.hdaily.di.module;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 
+import com.hwj.hdaily.base.BaseApplication;
 import com.hwj.hdaily.di.annotation.AppScope;
 
 import dagger.Module;
@@ -33,16 +35,16 @@ public class AppModule {
 
     @Provides
     public Handler provideHandler() {
-        return new Handler();
+        return new Handler(Looper.getMainLooper());
     }
 
     @Provides
     public Thread provideMainThread() {
-        return Thread.currentThread();
+        return BaseApplication.mMainThread;
     }
 
     @Provides
     public int provideMainThreadId() {
-        return android.os.Process.myTid();
+        return BaseApplication.mMainThreadId;
     }
 }
