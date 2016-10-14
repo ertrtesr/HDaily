@@ -10,6 +10,8 @@ import com.hwj.hdaily.di.component.AppComponent;
 import com.hwj.hdaily.di.component.DaggerAppComponent;
 import com.hwj.hdaily.di.module.AppModule;
 import com.hwj.hdaily.manager.ActivityCollection;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMOptions;
 
 import java.util.Iterator;
 import java.util.List;
@@ -39,7 +41,18 @@ public class BaseApplication extends Application {
         initEaseMob();
     }
 
+    /**
+     * 初始化环信的操作
+     */
     private void initEaseMob() {
+        // 默认添加好友时，是不需要验证的，改成需要验证
+        EMOptions options = new EMOptions();
+        options.setAcceptInvitationAlways(false);
+        //初始化
+        EMClient.getInstance().init(mAppContext, options);
+        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
+        EMClient.getInstance().setDebugMode(true);
+
         mPid = android.os.Process.myPid();
         String processAppName = getAppName(mPid);
 
@@ -72,7 +85,7 @@ public class BaseApplication extends Application {
                     return processName;
                 }
             } catch (Exception e) {
-                // Log.d("Process", "Error>> :"+ e.toString());
+
             }
         }
         return processName;

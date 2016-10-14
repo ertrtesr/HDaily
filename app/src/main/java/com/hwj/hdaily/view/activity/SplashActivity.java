@@ -61,7 +61,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements ISp
         UIUtils.postTaskDelay(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
