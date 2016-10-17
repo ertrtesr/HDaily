@@ -69,6 +69,11 @@ dependencies {
     compile files('libs/tbs_sdk_thirdapp_v2.3.0.1048_36801_sharewithdownload_obfs_20160829_200437.jar')
     //MaterialEditText
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
+
+    //CircleImageView
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
+    //JavaMail
     compile files('libs/commons-email-1.4.jar')
     compile files('libs/activation.jar')
     compile files('libs/hyphenatechat_3.1.5.jar')

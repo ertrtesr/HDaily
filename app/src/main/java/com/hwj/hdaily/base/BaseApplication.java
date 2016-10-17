@@ -4,6 +4,7 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Process;
 import android.util.Log;
 
 import com.hwj.hdaily.di.component.AppComponent;
@@ -96,10 +97,16 @@ public class BaseApplication extends Application {
     }
 
     public static void exitApp() {
-        if (ActivityCollection.map != null && ActivityCollection.map.size() > 0) {
-            ActivityCollection.removeAll();
-        }
-//        android.os.Process.killProcess(android.os.Process.myPid());     //杀死进程
-        System.exit(0);
+        Thread exitThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (ActivityCollection.map != null && ActivityCollection.map.size() > 0) {
+                    ActivityCollection.finishAllActivities();
+                }
+                Process.killProcess(Process.myPid());     //杀死进程
+                System.exit(0);
+            }
+        });
+        exitThread.start();
     }
 }

@@ -14,7 +14,12 @@
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/ToolbarTheme"
         app:title="邮箱"
-        app:titleTextColor="@android:color/white"></android.support.v7.widget.Toolbar>
+        app:titleTextColor="@android:color/white">
+
+
+
+
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"

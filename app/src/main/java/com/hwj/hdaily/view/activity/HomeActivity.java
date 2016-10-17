@@ -135,9 +135,12 @@ public class HomeActivity extends BaseActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_mail:
-                        Intent intent = new Intent(HomeActivity.this, MailActivity.class);
-                        startActivity(intent);
+                        Intent mailIntent = new Intent(HomeActivity.this, MailActivity.class);
+                        startActivity(mailIntent);
                         break;
+                    case R.id.menu_message:
+                        Intent friendIntent = new Intent(HomeActivity.this, FriendActivity.class);
+                        startActivity(friendIntent);
                     default:
                         break;
                 }
@@ -148,18 +151,18 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-//        showExitDialog();       //显示退出应用的对话框
-        System.exit(0);
+        showExitDialog();       //显示退出应用的对话框
     }
 
     private void showExitDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("提示");
         builder.setMessage("确定退出吗?");
         builder.setNegativeButton("取消", null);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
                 BaseApplication.exitApp();
             }
         });
