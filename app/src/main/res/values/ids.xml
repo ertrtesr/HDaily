@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="toolbar" type="id">false</item>
+    <item name="pb_message" type="id">false</item>
+    <item name="iv_message_error" type="id">false</item>
 </resources>

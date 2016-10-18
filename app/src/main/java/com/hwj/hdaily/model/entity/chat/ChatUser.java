@@ -1,5 +1,7 @@
 package com.hwj.hdaily.model.entity.chat;
 
+import java.io.Serializable;
+
 /**
  * 作者: huangwenjian
  * <p>
@@ -8,7 +10,7 @@ package com.hwj.hdaily.model.entity.chat;
  * 时间: 16/10/17
  */
 
-public class ChatUser {
+public class ChatUser implements Serializable{
     private String clientId;            //clientId即用户名,唯一标示
     private String avatarUrl;              //头像
 

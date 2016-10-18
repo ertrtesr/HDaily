@@ -1,6 +1,10 @@
 package com.hwj.hdaily.manager;
 
+import com.hwj.hdaily.listener.OnMessageStatusCallback;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMChatManager;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
 
 /**
@@ -12,12 +16,14 @@ import com.hyphenate.chat.EMMessage;
  */
 
 public class ChatManager {
-    private ChatManager mInstance;
+    private static ChatManager mInstance;
+    private EMChatManager mChatManager;
 
     private ChatManager() {
+        mChatManager = EMClient.getInstance().chatManager();
     }
 
-    public ChatManager getInstance() {
+    public static ChatManager getInstance() {
         if (mInstance == null) {
             synchronized (ChatManager.class) {
                 if (mInstance == null) {
@@ -34,11 +40,27 @@ public class ChatManager {
      * @param text
      * @return
      */
-    public void sendTextMessage(String text, String toChatUsername) {
-        EMMessage message = EMMessage.createTxtSendMessage(text, toChatUsername);
+    public void sendTextMessage(String text, String toChatUsername, final OnMessageStatusCallback callback) {
+        final EMMessage message = EMMessage.createTxtSendMessage(text, toChatUsername);
+        message.setMessageStatusCallback(new EMCallBack() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess(message);
+            }
+
+            @Override
+            public void onError(int code, String error) {
+                callback.onError(message, error);
+            }
+
+            @Override
+            public void onProgress(int progress, String status) {
+                callback.onProgress(progress, status);
+            }
+        });
 
         //发送消息
-        EMClient.getInstance().chatManager().sendMessage(message);
+        mChatManager.sendMessage(message);
     }
 
     /**
@@ -49,7 +71,7 @@ public class ChatManager {
      */
     public void sendImageMessage(String imagePath, String toChatUsername) {
         EMMessage message = EMMessage.createImageSendMessage(imagePath, false, toChatUsername);
-        EMClient.getInstance().chatManager().sendMessage(message);
+        mChatManager.sendMessage(message);
     }
 
     /**
@@ -61,6 +83,17 @@ public class ChatManager {
      */
     public void sendVoiceMessage(String filePath, int length, String toChatUsername) {
         EMMessage message = EMMessage.createVoiceSendMessage(filePath, length, toChatUsername);
-        EMClient.getInstance().chatManager().sendMessage(message);
+        mChatManager.sendMessage(message);
+    }
+
+    /**
+     * 根据用户名获取conversation
+     *
+     * @param clientId 用户名
+     * @return
+     */
+    public EMConversation getConversation(String clientId) {
+        EMConversation conversation = mChatManager.getConversation(clientId);
+        return conversation;
     }
 }

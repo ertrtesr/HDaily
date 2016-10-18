@@ -1,5 +1,6 @@
 package com.hwj.hdaily.view.activity;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,8 +12,12 @@ import com.hwj.hdaily.R;
 import com.hwj.hdaily.adapter.FriendAdapter;
 import com.hwj.hdaily.base.BaseActivity;
 import com.hwj.hdaily.base.listener.RecyclerViewClickListener;
+import com.hwj.hdaily.conf.Constants;
 import com.hwj.hdaily.manager.UserCreator;
+import com.hwj.hdaily.model.entity.chat.ChatUser;
 import com.hwj.hdaily.utils.UIUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -34,6 +39,8 @@ public class FriendActivity extends BaseActivity {
     @BindView(R.id.rv_friend)
     RecyclerView rv_friend;
 
+    private List<ChatUser> mChatUsers;
+
     @Override
     protected void initInject() {
 
@@ -46,13 +53,15 @@ public class FriendActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        setSupportActionBar(toolbar_friend);
-        getSupportActionBar().setTitle(null);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mChatUsers = UserCreator.getAllUsers();
     }
 
     @Override
     protected void initView() {
+        setSupportActionBar(toolbar_friend);
+        getSupportActionBar().setTitle(null);                           //隐藏标题
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);          //显示返回键
+
         //设置toolbar
         rv_friend.setLayoutManager(new LinearLayoutManager(this));
         FriendAdapter friendAdapter = new FriendAdapter(UserCreator.getAllUsers());
@@ -77,7 +86,11 @@ public class FriendActivity extends BaseActivity {
                 new RecyclerViewClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+                        ChatUser chatUser = mChatUsers.get(position);
 
+                        Intent singChatIntent = new Intent(FriendActivity.this, SingleChatActivity.class);
+                        singChatIntent.putExtra(Constants.CHAT_USER, chatUser);
+                        startActivity(singChatIntent);
                     }
 
                     @Override

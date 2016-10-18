@@ -7,6 +7,7 @@ import android.os.Process;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -151,5 +152,14 @@ public class UIUtils {
 
     public static void loadImage(String url, ImageView iv) {
         Glide.with(getContext()).load(url).centerCrop().into(iv);
+    }
+
+    /**
+     * 清空输入框
+     *
+     * @param et
+     */
+    public static void clearInputText(EditText et) {
+        et.setText("");
     }
 }

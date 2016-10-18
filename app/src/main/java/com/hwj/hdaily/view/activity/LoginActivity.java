@@ -65,6 +65,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         String password = SPUtils.getString(Constants.PASSWORD);
         if (!TextUtils.isEmpty(username)) {
             met_username.setText(username);
+            met_username.setSelection(username.length());
         }
         if (!TextUtils.isEmpty(password)) {
             met_password.setText(password);
